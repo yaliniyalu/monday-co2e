@@ -24,17 +24,17 @@ if (process.env.NODE_ENV === 'development') {
         const { statusCode, body } = res;
         console.log(`${statusCode} ${body}`);
     })
-
-    app.use((err, req, res, next) => {
-        console.error(err.message);
-        res.status(500).json({ error: err.message });
-        next(err);
-    });
 }
+
+app.use((err, req, res, next) => {
+    console.error(err.message);
+    res.status(500).json({ error: err.message });
+    next(err);
+});
 
 app.use('/', routes);
 
 // listen
 app.listen(process.env.APP_PORT, () => {
-    console.log('listening on port 3000');
+    console.log('listening on port ' + process.env.APP_PORT);
 })
