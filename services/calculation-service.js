@@ -38,8 +38,8 @@ async function calculateAndTrigger(subscription, itemId, userId) {
         emission = await calculate(subscription.calculatorType, fields)
     }
 
-    console.log(fields)
-    console.log(emission)
+/*    console.log(fields)
+    console.log(emission)*/
 
     await mondayService.triggerAction(subscription.webhookUrl, {
         ...emission,
