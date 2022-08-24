@@ -16,19 +16,21 @@ mongoose
 app.use(cors());
 app.use(express.json());
 
-// log requests & responses
-app.use(function(req, res, next) {
-    console.log(`${req.method} ${req.path}`);
-    next();
-    const { statusCode, body } = res;
-    console.log(`${statusCode} ${body}`);
-})
+if (process.env.NODE_ENV === 'development') {
+    // log requests & responses
+    app.use(function(req, res, next) {
+        console.log(`${req.method} ${req.path}`);
+        next();
+        const { statusCode, body } = res;
+        console.log(`${statusCode} ${body}`);
+    })
 
-app.use((err, req, res, next) => {
-    console.error(err.message);
-    res.status(500).json({ error: err.message });
-    next(err);
-});
+    app.use((err, req, res, next) => {
+        console.error(err.message);
+        res.status(500).json({ error: err.message });
+        next(err);
+    });
+}
 
 app.use('/', routes);
 
