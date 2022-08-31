@@ -1,0 +1,77 @@
+{% extends "base.njk" %}
+
+{% block assets %}
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+{% endblock %}
+
+{% block content %}
+    <h2>Documentation</h2>
+    <p>This app contains 14 integration recipes to calculate carbon emission.</p>
+
+    <h4>Recipe Category</h4>
+    <table>
+        <thead>
+        <tr>
+            <th>Category</th>
+            <th>Factors</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in recipeCategory %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td><a href="{{ item.url }}">Click Here</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h4>Recipes</h4>
+    <ol>
+        {% for item in recipes %}
+            <li>{{ item | replace("[", "<span class='recipe-field static'>") | replace("{", "<span class='recipe-field'>") | replace("]", "</span>") | replace("}", "</span>") | safe }}</li>
+        {% endfor %}
+    </ol>
+    <p>If 'static' is specified in field, then the value can be selected from integration recipe, otherwise field from board must be selected.</p>
+    <p>For 'Status' or 'Label' field the labels will be auto-populated in field in board when adding that integration recipe. So you don't have to add the fields manually.</p>
+
+    <blockquote class="error">
+        <p>You should not remove the webhooks created automatically.</p>
+    </blockquote>
+
+    <blockquote class="warning">
+        <p>For auto-populating status fields new item will be created in board. It will be removed once the field is populated with values.</p>
+    </blockquote>
+
+
+
+    <h4>Units Used</h4>
+    <p>The following units are always used to specify the value</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Unit</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in units %}
+            <tr>
+                <th>{{ item.name }}</th>
+                <th>{{ item.unit }}</th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <p>If you have any questions or found any bugs reach out us on mail id <a href="#">samarjben@gmail.com</a> or rise an issue on <a href="https://github.com/yaliniyalu/monday-co2e">Github</a>.</p>
+
+    <h5>Links</h5>
+    <ul>
+        <li><a href="/contact">Contact us</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of service</a></li>
+    </ul>
+
+    <a class="github-button" href="https://github.com/yaliniyalu/monday-co2e/fork" data-size="large" data-show-count="true" aria-label="Fork yaliniyalu/monday-co2e on GitHub">Fork</a>
+{% endblock %}

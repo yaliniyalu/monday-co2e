@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/monday-ui-style@0.1.134/dist/index.min.css");
+
+@for $i from 1 through 5 {
+  h#{$i}, .h#{$i} {
+    font: var(--font-h#{$i});
+  }
+}
+
+p, .p, .text, td, th, li {
+  font: var(--font-paragraph);
+}
+
+.subtext {
+  font: var(--font-subtext);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 22px;
+  margin-bottom: 15px;
+}
+
+p, table {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+b {
+    font-weight: var(--font-weight-bold);
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: var(--border-width) var(--border-style) var(--layout-border-color);
+
+  thead, tbody, tr, th, td {
+    border: var(--border-width) var(--border-style) var(--layout-border-color);
+  }
+
+  thead tr th {
+    font-weight: var(--font-weight-bold);
+  }
+
+  th, td {
+    padding: 8px;
+  }
+}
+
+ul, ol {
+  li {
+    margin-top: 2.75px
+  }
+}
+
+a {
+    color: var(--color-link_color);
+    text-decoration: none;
+}
+
+.recipe-field {
+  font-weight: var(--font-weight-bold);
+
+  &.static {
+    font-style: italic;
+  }
+}
+
+blockquote {
+  margin: 0 0 15px;
+  display: block;
+  border-left: 3px solid #dfe2e5;
+  padding: 22px;
+
+  p {
+    margin: 0;
+  }
+
+  &.success {
+    background: var(--color-success-highlight);
+    border-color: var(--color-success);
+  }
+
+  &.warning {
+    background: var(--color-working_orange-selected);
+    border-color: var(--color-working_orange-hover);
+  }
+
+  &.error {
+    background: var(--color-error-highlight);
+    border-color: var(--color-error);
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--color-ui_grey)
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+$spacing-sizes: (
+        xs: xs,
+        sm: small,
+        md: medium,
+        lg: large,
+        xl: xl,
+        xxl: xxl,
+        xxxl: xxxl
+);
+
+@each $name, $size in $spacing-sizes {
+  .m-#{$name} {
+    margin: var(--spacing-#{$size});
+  }
+  .mt-#{$name} {
+    margin-top: var(--spacing-#{$size});
+  }
+  .mb-#{$name} {
+    margin-bottom: var(--spacing-#{$size});
+  }
+  .ml-#{$name} {
+    margin-left: var(--spacing-#{$size});
+  }
+  .mr-#{$name} {
+    margin-right: var(--spacing-#{$size});
+  }
+  .mx-#{$name} {
+    margin-left: var(--spacing-#{$size});
+    margin-right: var(--spacing-#{$size});
+  }
+  .my-#{$name} {
+    margin-top: var(--spacing-#{$size});
+    margin-bottom: var(--spacing-#{$size});
+  }
+  .p-#{$name} {
+    padding: var(--spacing-#{$size});
+  }
+  .pt-#{$name} {
+    padding-top: var(--spacing-#{$size});
+  }
+  .pb-#{$name} {
+    padding-bottom: var(--spacing-#{$size});
+  }
+  .pl-#{$name} {
+    padding-left: var(--spacing-#{$size});
+  }
+  .pr-#{$name} {
+    padding-right: var(--spacing-#{$size});
+  }
+  .px-#{$name} {
+    padding-left: var(--spacing-#{$size});
+    padding-right: var(--spacing-#{$size});
+  }
+  .py-#{$name} {
+    padding-top: var(--spacing-#{$size});
+    padding-bottom: var(--spacing-#{$size});
+  }
+}
+
+.page-header {
+  color: #FFF;
+  text-align: center;
+  background-color: #ee7d58;
+  background-image: linear-gradient(120deg, #4E00FF, #F90);
+  background-image: url('../svg/banner.svg');
+  background-size: cover;
+  margin-top: 0;
+  padding: 2rem 1rem;
+}
+
+.main {
+  padding: 32px;
+}
+
+

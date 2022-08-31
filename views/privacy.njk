@@ -1,0 +1,23 @@
+{% extends "base-min.njk" %}
+
+{% block title %}Privacy Policy{% endblock %}
+
+{% block content %}
+    <h2 class="text-center">Privacy Policy</h2>
+    <p class="text-center">Last updated: 2022-09-01</p>
+
+    <p>Thank you for choosing to be part of our community at <b>Carbon Emission for Monday.com</b> ("Company", "we", "us", or "our"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice, or our practices with regard to your personal information, please contact us at <b>samarjben@gmail.com</b>.</p>
+    <p>
+        This privacy policy has been compiled to better serve those who are concerned with how their 'Personally Identifiable Information' (PII) is being used online. PII, as described in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.</p>
+    <p>
+        We do not collect or store any personal information from our users. We do not collect any information from our users, including but not limited to, their name, address, email address, phone number, or any other information that can be used to identify them.
+        When user adds an integration recipe, you are required to provide access to your monday.com account. We only store your userId and access token, which is used to make API calls to your monday.com account. We do not store any other information about your account.
+        We store your integration recipe details, and we also create a webhook automatically and store its details. This information is required to provide the service to you.
+        The oauth scopes we request from monday.com are: boards and webhooks. We do not request any other scopes. The scopes will be used as below:</p>
+    <ul>
+        <li><b>boards:read</b> - to read an item from board. This is used to read column values to calculate your carbon emission. The column details also read to check the column types. <i>The columns will be provided by you in integration recipe.</i></li>
+        <li><b>boards:write</b> - to change column value. This is used to set the calculated emission value to the column. It is also used to create temporary item as a workaround to populate status column values. <i>The columns will be provided by you in integration recipe.</i></li>
+        <li><b>webhooks:write</b> - to create a webhook. This will tell us when certain columns are changed in board. <i>The columns will be provided by you in integration recipe.</i></li>
+        <li><b>webhooks:read</b> - to read the webhooks created by the app before.</li>
+    </ul>
+{% endblock %}

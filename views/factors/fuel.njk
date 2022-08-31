@@ -1,0 +1,26 @@
+{% extends "base.njk" %}
+
+{% block content %}
+    <h2>Emission Factors for fuel consumption</h2>
+    <p>This table contains emission factors used for fuel consumption.</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Fuel</th>
+            <th>Factor (kg Co2e / liter)</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in fuels %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.factor | round(4) }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <p>
+        <a target="_blank" href="https://www.sunearthtools.com/tools/CO2-emissions-calculator.php">Reference</a>,
+        <a target="_blank" href="https://www.engineeringtoolbox.com/co2-emission-fuels-d_1085.html">Reference</a>
+    </p>
+{% endblock %}

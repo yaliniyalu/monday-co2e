@@ -1,0 +1,23 @@
+{% extends "base.njk" %}
+
+{% block content %}
+    <h2>Emission Factors for Inland Waterways</h2>
+    <p>This table contains emission factors used for inland waterways.</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Grid Type</th>
+            <th>Factor (kg Co2e / km)</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in waterways %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.factor | round(4) }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <p><a target="_blank" href="https://www.smartfreightcentre.org/pdf/GLEC-report-on-GHG-Emission-Factors-for-Inland-Waterways-Transport-SFC2018.pdf">Reference</a></p>
+{% endblock %}

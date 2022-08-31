@@ -1,0 +1,22 @@
+{% extends "base.njk" %}
+
+{% block content %}
+    <h2>Emission Factors for Flight travel</h2>
+    <p>Emission for flight travel is calculated using the formula provided <a href="https://www.myclimate.org/fileadmin/user_upload/myclimate_-_home/01_Information/01_About_myclimate/09_Calculation_principles/Documents/myclimate-flight-calculator-documentation_EN.pdf" target="_blank">here</a>.
+    The airport details (Name, IATA, ICAO) and distance between airports are taken from <a href="https://flight-distance.com/" target="_blank">here</a>.</p>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Cabin Class</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in cabinClasses %}
+            <tr>
+                <td>{{ item.name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

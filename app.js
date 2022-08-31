@@ -3,11 +3,17 @@ require('dotenv').config();
 const express = require('express');
 require('express-async-errors');
 const mongoose = require('mongoose');
+const nunjucks = require('nunjucks');
 
 const routes = require('./routes');
 
 const app = express();
 const cors = require('cors');
+
+nunjucks.configure('views', {
+    autoescape: true,
+    express: app,
+});
 
 mongoose
     .connect(process.env.MONGODB_URI)
@@ -32,6 +38,7 @@ app.use((err, req, res, next) => {
     next(err);
 });
 
+app.use(express.static('public'));
 app.use('/', routes);
 
 // listen

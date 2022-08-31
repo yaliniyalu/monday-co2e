@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Monday Co2{% endblock %}</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    {% block assets %}
+
+    {% endblock %}
+</head>
+
+<body>
+<header class="page-header">
+    <h1 class="text-bold">Carbon Emission Calculator</h1>
+    <p class="text-muted">Carbon emission calculators for monday.com</p>
+    <div class="mt-lg">
+        <a href="https://auth.monday.com/oauth2/authorize?client_id=8b1941931bf73d243609e5029c0c7237&response_type=install">
+            <img
+                    alt="Add to monday.com"
+                    height="42"
+                    src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/uploads/Tal/4b5d9548-0598-436e-a5b6-9bc5f29ee1d9_Group12441.png"
+            />
+        </a>
+    </div>
+</header>
+
+<main class="main">
+    {% block content %}{% endblock %}
+</main>
+
+</body>
+</html>

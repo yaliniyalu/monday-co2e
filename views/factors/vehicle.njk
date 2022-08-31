@@ -1,0 +1,26 @@
+{% extends "base.njk" %}
+
+{% block content %}
+    <h2>Emission Factors for land vehicles</h2>
+    <p>This table contains emission factors used for land vehicles.</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Vehicle Type</th>
+            <th>Factor (kg Co2e / km)</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in vehicles %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.factor | round(4) }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <p>
+        <a target="_blank" href="https://www.carbonindependent.org/files/conversion-factors.pdf">Reference</a>,
+        <a target="_blank" href="https://people.exeter.ac.uk/TWDavies/energy_conversion/Calculation%20of%20CO2%20emissions%20from%20fuels.htm">Reference</a>
+    </p>
+{% endblock %}

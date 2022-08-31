@@ -1,0 +1,44 @@
+{% extends "base.njk" %}
+
+{% block content %}
+    <h2>Emission Factors for Electricity By Grid Type</h2>
+    <p>This table contains emission factors used for electricity grid types.</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Grid Type</th>
+            <th>Factor (kg Co2e / kWh)</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in gridTypes %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.factor }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <p><a target="_blank" href="https://en.wikipedia.org/wiki/Life-cycle_greenhouse_gas_emissions_of_energy_sources">Reference</a></p>
+
+    <h2>Emission Factors for Electricity By Country</h2>
+    <p>This table contains emission factors used for electricity produced in each country.</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Country</th>
+            <th>Factor (kg Co2e / kWh)</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in countries %}
+            <tr>
+                <td>{{ item.country.name }}</td>
+                <td>{{ item.electricityConversionFactor }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <p><a target="_blank" href="https://calculator.carbonfootprint.com/calculator.aspx">Reference</a></p>
+{% endblock %}

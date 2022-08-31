@@ -5,6 +5,7 @@ const AuthorizationController = require('./controllers/authorization-controller'
 const WebhookController = require('./controllers/webhook-controller');
 const ActionController = require('./controllers/action-controller');
 const FetchController = require('./controllers/fetch-controller');
+const WebPageController = require("./controllers/web-page-controller");
 
 const auth = require("./middlewares/auth-middleware");
 const challenge = require("./middlewares/challenge-middleware");
@@ -33,5 +34,12 @@ router.post('/fetch/iwt', auth, FetchController.getIWT)
 router.post('/fetch/cabin-class', auth, FetchController.getCabinClass)
 router.post('/fetch/vehicle-type', auth, FetchController.getVehicles)
 router.post('/fetch/fuel', auth, FetchController.getFuels)
+
+// pages
+router.get('/', WebPageController.index)
+router.get('/factors/:factor', WebPageController.factors)
+router.get('/contact', WebPageController.render('contact.njk'))
+router.get('/privacy', WebPageController.render('privacy.njk'))
+router.get('/terms', WebPageController.render('terms.njk'))
 
 module.exports = router;

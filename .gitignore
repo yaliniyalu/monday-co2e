@@ -130,3 +130,4 @@ dist
 .pnp.*
 
 .idea
+public/css/main.css
