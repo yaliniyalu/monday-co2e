@@ -101,6 +101,23 @@ async function triggerAction(url, fields) {
     }, {headers: {Authorization: `${process.env.MONDAY_SIGNING_SECRET}`}});
 }
 
+async function getWebhooks(boardId, token) {
+    const query = `
+query {
+    webhooks (board_id: ${boardId}) {
+        id
+    }
+}`
+    sdk.setToken(token);
+    const res = await sdk.api(query);
+    return res.data.webhooks;
+}
+
+async function getWebhook(boardId, webhookId, token) {
+    const webhooks = await getWebhooks(boardId, token);
+    return webhooks.find(webhook => webhook.id === webhookId);
+}
+
 async function runQuery(query, token) {
     sdk.setToken(token);
     const res = await sdk.api(query);
@@ -110,6 +127,7 @@ async function runQuery(query, token) {
 module.exports = {
     setWebHookForColumn,
     deleteWebHook,
+    getWebhook,
     getItem,
     createItem,
     updateColumn,

@@ -18,7 +18,7 @@ webhookSchema.statics.subscribe = async function(subscription, token) {
             continue
         }
 
-        const hook = await Webhook.findOne({boardId: subscription.boardId, columnId}).exec()
+        const hook = await Webhook.getWebhook(subscription.boardId, columnId, token).exec()
         if (hook) {
             if (!hook.subscriptions.includes(subscription._id)) {
                 hook.subscriptions.push(subscription._id)
@@ -63,6 +63,20 @@ webhookSchema.statics.unsubscribe = async function(subscription, token) {
             await hook.remove()
         }
     }
+}
+
+webhookSchema.statics.getWebhook = async function(boardId, columnId, token) {
+    const hook = await Webhook.findOne({boardId, columnId}).exec()
+    if (hook) {
+        const h = await mondayService.getWebhook(boardId, hook.webhookId, token)
+        if (!h) {
+            await hook.remove()
+            return null
+        }
+        return hook
+    }
+
+    return null
 }
 
 const Webhook = mongoose.model('Webhook', webhookSchema)
