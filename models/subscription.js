@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const subscriptionSchema = new Schema({
     calculatorType: { type: String, required: true },
     boardId: { type: Number, required: true },
+    userId: { type: Number, required: true },
     inputFields: { type: Object, required: true },
 
     webhookUrl: { type: String, required: true },

@@ -2,7 +2,7 @@ const Webhook = require("../models/webhook");
 const {calculateAndTrigger} = require("../services/calculation-service");
 
 async function handleColumnChange(req, res) {
-    const {userId, boardId, columnId, pulseId} = req.body.event
+    const {boardId, columnId, pulseId} = req.body.event
 
     const webhooks = await Webhook
         .findOne({boardId, columnId})
@@ -14,7 +14,7 @@ async function handleColumnChange(req, res) {
     }
 
     for (const subscription of webhooks.subscriptions) {
-        await calculateAndTrigger(subscription, pulseId, userId)
+        await calculateAndTrigger(subscription, pulseId)
     }
 
     res.status(200).send()

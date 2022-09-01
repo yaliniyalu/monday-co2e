@@ -22,13 +22,15 @@ async function subscribeTrigger(req, res) {
     delete payload.inputFields.boardId
 
     const unique = []
-    payload.inputFields = Object.entries(payload.inputFields).filter(([key, value]) => {
+    payload.inputFields = Object.entries(payload.inputFields).filter(([, value]) => {
         if (!unique.includes(value)) {
             unique.push(value)
             return true
         }
         return false
     }).reduce((acc, [key, value]) => { acc[key] = value; return acc }, {})
+
+    payload.userId = req.session.userId
 
     const subscription = new Subscription(payload)
     await subscription.save()
@@ -78,8 +80,6 @@ async function subscribeTrigger(req, res) {
         mutation.push(`delete_item (item_id: ${id}) { id }`)
         await MondayService.runQuery(`mutation { ${mutation.join('\n')} }`, req.session.shortLivedToken)
     }
-
-    console.log(subscription.inputFields)
 
     await Webhook.subscribe(subscription, req.session.shortLivedToken)
 

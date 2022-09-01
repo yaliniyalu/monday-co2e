@@ -2,8 +2,8 @@ const Token = require("../models/token");
 const mondayService = require("./monday-service");
 const calculate = require("../calculators/calculator");
 
-async function calculateAndTrigger(subscription, itemId, userId) {
-    const token = await Token.findOne({ userId }).exec()
+async function calculateAndTrigger(subscription, itemId) {
+    const token = await Token.findOne({ userId: subscription.userId }).exec()
     if (!token) {
         return
     }
